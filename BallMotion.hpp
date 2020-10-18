@@ -1,0 +1,6 @@
+#ifndef BALLMOTION_HPP
+#define BALLMOTION_HPP
+
+
+
+#endif // BALLMOTION_HPP
