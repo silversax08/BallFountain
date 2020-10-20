@@ -4,7 +4,9 @@ project(Ball_Fountain)
 FIND_PACKAGE(Qt5Widgets)
 FIND_PACKAGE(Qt5Gui)
 FIND_PACKAGE(OpenSceneGraph REQUIRED COMPONENTS osgDB osgGA osgUtil osgViewer osgText)
+FIND_PACKAGE(GTest REQUIRED)
 
+include_directories(${GTEST_INCLUDE_DIRS})
 INCLUDE_DIRECTORIES( ${OPENSCENEGRAPH_INCLUDE_DIRS} )
 
 set(CMAKE_CXX_STANDARD 11)
@@ -26,6 +28,7 @@ add_executable(${PROJECT_NAME}
     mainwindowform.ui
     OSGWidget.h
     OSGWidget.cpp
+    update_ball_acceleration_tests.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}

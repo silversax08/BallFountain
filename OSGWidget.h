@@ -9,6 +9,7 @@
 #include <osgGA/TrackballManipulator>
 #include <osgText/Text>
 
+
 class OSGWidget : public QOpenGLWidget
 {
   Q_OBJECT
