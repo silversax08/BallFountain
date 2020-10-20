@@ -29,27 +29,24 @@ class SphereUpdateCallback: public osg::NodeCallback
 public:
     SphereUpdateCallback(){}
 
-//    virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
-//    {
-//        if(mUp)
-//            mCount++;
-//        else
-//            mCount--;
+    virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
+    {
+        mCount--;
 
 
-//        osg::Vec3d scaleFactor(mScaleStep*mCount+1.0, 1.0, 1.0);
-//        osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
-//        pat->setScale(scaleFactor);
+        osg::Vec3d scaleFactor(1.0, 1.0, mScaleStep*mCount-10);
+        osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
+        pat->setPosition(scaleFactor);
 
-//        traverse(node, nv);
+        traverse(node, nv);
 
-//        if(mCount==30 || mCount==0)
-//            mUp=!mUp;
-//    }
+        if(mCount==0)
+            return;
+    }
 protected:
     bool mUp{true};
-    unsigned int mCount{0};
-    double mScaleStep{1.0/30.0};
+    unsigned int mCount{100};
+    double mScaleStep{6.0/30.0};
 };
 
 

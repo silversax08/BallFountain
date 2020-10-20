@@ -17,3 +17,8 @@ void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+
+}
