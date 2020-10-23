@@ -19,7 +19,11 @@ public:
              Qt::WindowFlags f = 0 );
 
   virtual ~OSGWidget();
+  void sphere_setup();
+  void sphere_setup_2();
 protected:
+  void camera_setup( int width, int height, int pixelRatio, float aspectRatio );
+
   virtual void paintEvent( QPaintEvent* paintEvent );
   virtual void paintGL();
   virtual void resizeGL( int width, int height );

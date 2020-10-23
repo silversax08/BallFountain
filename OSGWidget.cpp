@@ -24,30 +24,7 @@
 #include <QPainter>
 #include <QWheelEvent>
 
-class SphereUpdateCallback: public osg::NodeCallback
-{
-public:
-    SphereUpdateCallback(){}
-
-    virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
-    {
-        mCount--;
-
-
-        osg::Vec3d scaleFactor(1.0, 1.0, mScaleStep*mCount-10);
-        osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
-        pat->setPosition(scaleFactor);
-
-        traverse(node, nv);
-
-        if(mCount==0)
-            return;
-    }
-protected:
-    bool mUp{true};
-    unsigned int mCount{100};
-    double mScaleStep{6.0/30.0};
-};
+#include "sphereupdatecallback.h"
 
 
 
@@ -64,16 +41,9 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     mView = new osgViewer::View;
 
     float aspectRatio = static_cast<float>( this->width() ) / static_cast<float>( this->height() );
-    auto pixelRatio   = this->devicePixelRatio();
+    int pixelRatio   = this->devicePixelRatio();
 
-    osg::Camera* camera = new osg::Camera;
-    camera->setViewport( 0, 0, this->width() * pixelRatio, this->height() * pixelRatio );
-
-    camera->setClearColor( osg::Vec4( 0.f, 0.f, .5, 1.f ) );
-    camera->setProjectionMatrixAsPerspective( 45.f, aspectRatio, 1.f, 1000.f );
-    camera->setGraphicsContext( mGraphicsWindow );
-    mView->setCamera( camera );
-
+    camera_setup(this->width(), this->height(), pixelRatio, aspectRatio);
 
     mView->setSceneData( mRoot.get() );
     mView->addEventHandler( new osgViewer::StatsHandler );
@@ -89,30 +59,9 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     mViewer->realize();
     mView->home();
 
-    osg::Sphere* sphere    = new osg::Sphere( osg::Vec3( 0.f, 0.f, 0.f ), 2.0f );
-    osg::ShapeDrawable* sd = new osg::ShapeDrawable( sphere );
-    sd->setColor( osg::Vec4( 1.f, 0.f, 0.f, 1.f ) );
-    sd->setName( "Sphere" );
+    sphere_setup();
+    sphere_setup_2();
 
-    osg::Geode* geode = new osg::Geode;
-    geode->addDrawable( sd );
-
-    osg::StateSet* stateSet = geode->getOrCreateStateSet();
-    osg::Material* material = new osg::Material;
-
-    material->setColorMode( osg::Material::AMBIENT_AND_DIFFUSE );
-
-    stateSet->setAttributeAndModes( material, osg::StateAttribute::ON );
-    stateSet->setMode( GL_DEPTH_TEST, osg::StateAttribute::ON );
-
-    osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
-    transform->setPosition(osg::Vec3( 0.f, 0.f, 0.f ));
-    transform->setUpdateCallback(new SphereUpdateCallback());
-    transform->addChild(geode);
-
-
-
-    mRoot->addChild(transform);
 
     this->setFocusPolicy( Qt::StrongFocus );
     this->setMinimumSize( 100, 100 );
@@ -183,5 +132,67 @@ osgGA::EventQueue* OSGWidget::getEventQueue() const
         return eventQueue;
     else
         throw std::runtime_error( "Unable to obtain valid event queue");
+}
+
+void OSGWidget::camera_setup(int width, int height, int pixelRatio,float aspectRatio)
+{
+    osg::Camera* camera = new osg::Camera;
+    camera->setViewport( 0, 0, width * pixelRatio, height * pixelRatio);
+
+    camera->setClearColor( osg::Vec4( 0.f, 0.f, .5, 1.f ) );
+    camera->setProjectionMatrixAsPerspective( 45.f, aspectRatio, 1.f, 1000.f );
+    camera->setGraphicsContext( mGraphicsWindow );
+    mView->setCamera( camera );
+}
+
+void OSGWidget::sphere_setup()
+{
+    osg::Sphere* sphere    = new osg::Sphere( osg::Vec3( 0.f, 0.f, 0.f ), 2.0f );
+    osg::ShapeDrawable* sd = new osg::ShapeDrawable( sphere );
+    sd->setColor( osg::Vec4( 1.f, 0.f, 0.f, 1.f ) );
+    sd->setName( "Sphere" );
+
+    osg::Geode* geode = new osg::Geode;
+    geode->addDrawable( sd );
+
+    osg::StateSet* stateSet = geode->getOrCreateStateSet();
+    osg::Material* material = new osg::Material;
+
+    material->setColorMode( osg::Material::AMBIENT_AND_DIFFUSE );
+
+    stateSet->setAttributeAndModes( material, osg::StateAttribute::ON );
+    stateSet->setMode( GL_DEPTH_TEST, osg::StateAttribute::ON );
+
+    osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
+    transform->setPosition(osg::Vec3( 4.0, 0.0, 2.0 ));
+    //transform->setUpdateCallback(new SphereUpdateCallback());
+    transform->addChild(geode);
+
+    mRoot->addChild(transform);
+}
+void OSGWidget::sphere_setup_2()
+{
+    osg::Sphere* sphere    = new osg::Sphere( osg::Vec3( 0.f, 0.f, 0.f ), 2.0f );
+    osg::ShapeDrawable* sd = new osg::ShapeDrawable( sphere );
+    sd->setColor( osg::Vec4( 1.f, 0.f, 0.f, 1.f ) );
+    sd->setName( "Sphere" );
+
+    osg::Geode* geode = new osg::Geode;
+    geode->addDrawable( sd );
+
+    osg::StateSet* stateSet = geode->getOrCreateStateSet();
+    osg::Material* material = new osg::Material;
+
+    material->setColorMode( osg::Material::AMBIENT_AND_DIFFUSE );
+
+    stateSet->setAttributeAndModes( material, osg::StateAttribute::ON );
+    stateSet->setMode( GL_DEPTH_TEST, osg::StateAttribute::ON );
+
+    osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
+    transform->setPosition(osg::Vec3( 4.0, 0.0, 2.0 ));
+    transform->setUpdateCallback(new SphereUpdateCallback(100));
+    transform->addChild(geode);
+
+    mRoot->addChild(transform);
 }
 

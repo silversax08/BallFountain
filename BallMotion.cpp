@@ -1,6 +1,21 @@
 #include "BallMotion.hpp"
 
-double update_ball_acceleration(double mass)
+UpdateBallPhysics::UpdateBallPhysics()
 {
-    return mass;
+
 }
+
+//std::array<double,3> calculate_new_acceleration()
+//{
+
+//}
+
+//std::array<double,3> calculate_new_velocity()
+//{
+
+//}
+
+//std::array<double,3> calculate_new_position()
+//{
+
+//}
