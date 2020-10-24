@@ -7,16 +7,17 @@ class UpdateBallPhysics
 {
 public:
     UpdateBallPhysics();
-protected:
-    osg::Vec3d calculate_new_acceleration();
+    void calculate_new_acceleration(osg::Vec3d OldAcceleration, osg::Vec3d OldDragForce);
     osg::Vec3d calculate_new_velocity();
     osg::Vec3d calculate_new_position();
     osg::Vec3d calculate_drag_force();
+    osg::Vec3d updatedAcceleration{0.0,0.0,0.0};
+    osg::Vec3d updatedVelocity{0.0,0.0,0.0};
+    osg::Vec3d updatedPosition{0.0,0.0,0.0};
+    osg::Vec3d updatedDragForce{0.0,0.0,0.0};
+protected:
+
 private:
-    osg::Vec3d oldAcceleration{0.0,0.0,-9.8};
-    osg::Vec3d oldVelocity{0.0,0.0,0.0};
-    osg::Vec3d oldPosition{0.0,0.0,0.0};
-    osg::Vec3d oldDragForce{0.0,0.0,0.0};
     double deltat{0.0};
 };
 

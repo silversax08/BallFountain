@@ -1,8 +1,8 @@
 #include "BallMotion.hpp"
+//#include <osg/StateSet>
 
 UpdateBallPhysics::UpdateBallPhysics()
-{
-
+{  
 }
 
 osg::Vec3d calculate_drag_force()
@@ -11,10 +11,9 @@ osg::Vec3d calculate_drag_force()
     return dragForce;
 }
 
-osg::Vec3d calculate_new_acceleration()
+void calculate_new_acceleration(osg::Vec3d OldAcceleration, osg::Vec3d OldDragForce)
 {
-    osg::Vec3d acceleration(0,0,0);
-    return acceleration;
+
 }
 
 osg::Vec3d calculate_new_velocity()
