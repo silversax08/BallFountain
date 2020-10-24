@@ -30,13 +30,17 @@ add_executable(${PROJECT_NAME}
     OSGWidget.cpp
     sphereupdatecallback.h
     sphereupdatecallback.cpp
-)
-
-add_executable(Unit_Tests
     calculate_new_acceleration.cpp
     calculate_new_velocity.cpp
     calculate_new_position.cpp
-    )
+    calculate_drag_force.cpp
+)
+
+#add_executable(Unit_Tests
+#    calculate_new_acceleration.cpp
+#    calculate_new_velocity.cpp
+#    calculate_new_position.cpp
+#    )
 
 target_link_libraries(${PROJECT_NAME}
     ${OPENSCENEGRAPH_LIBRARIES}
