@@ -9,7 +9,7 @@ TEST(updateBallAcceleration,whenInitialAccelerationIsGravity_ExpectCorrectValue)
     osg::Vec3d initialVelocity(0.0,0.0,0.0);
     osg::Vec3d initialPosition(0.0,0.0,0.0);
 
-    osg::Vec3d compare(0.0,0.0,0.0);
+    osg::Vec3d compare(1.0,0.0,0.0);
 
     UpdateBallPhysics newInstance;
     EXPECT_EQ(compare, newInstance.updatedAcceleration);

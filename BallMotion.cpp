@@ -11,7 +11,7 @@ osg::Vec3d calculate_drag_force()
     return dragForce;
 }
 
-void calculate_new_acceleration(osg::Vec3d OldAcceleration, osg::Vec3d OldDragForce)
+void calculate_new_acceleration()
 {
 
 }

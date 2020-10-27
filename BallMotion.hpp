@@ -7,7 +7,7 @@ class UpdateBallPhysics
 {
 public:
     UpdateBallPhysics();
-    void calculate_new_acceleration(osg::Vec3d OldAcceleration, osg::Vec3d OldDragForce);
+    void calculate_new_acceleration();
     osg::Vec3d calculate_new_velocity();
     osg::Vec3d calculate_new_position();
     osg::Vec3d calculate_drag_force();
