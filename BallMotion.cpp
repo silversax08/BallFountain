@@ -5,6 +5,19 @@ UpdateBallPhysics::UpdateBallPhysics()
 {  
 }
 
+osg::Vec3d UpdateBallPhysics::get_position()
+{
+    update_physics();
+    return position;
+}
+
+void UpdateBallPhysics::update_physics()
+{
+    acceleration = calculate_new_acceleration(acceleration);
+    velocity = calculate_new_velocity(velocity,acceleration,deltat);
+    position = calculate_new_position(position,velocity,deltat);
+}
+
 osg::Vec3d calculate_drag_force()
 {
     osg::Vec3d dragForce(0,0,0);
