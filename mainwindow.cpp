@@ -23,5 +23,5 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    mMainWindowUI->OSGOutput->sphere_setup_2();
 }

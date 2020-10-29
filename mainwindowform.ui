@@ -36,7 +36,7 @@
      </spacer>
     </item>
     <item row="1" column="0" colspan="2">
-     <widget class="OSGWidget" name="widget" native="true"/>
+     <widget class="OSGWidget" name="OSGOutput" native="true"/>
     </item>
    </layout>
   </widget>

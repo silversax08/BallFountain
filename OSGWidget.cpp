@@ -59,7 +59,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     mViewer->realize();
     mView->home();
 
-    sphere_setup();
+//    sphere_setup();
     sphere_setup_2();
 
 
