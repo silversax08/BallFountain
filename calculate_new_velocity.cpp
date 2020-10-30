@@ -1,14 +1,15 @@
 #include "gtest/gtest.h"
 #include "BallMotion.hpp"
 #include <osg/StateSet>
+#include <array>
 
 //TEST(updateBallVelocity,whenNewAccelerationIsGravityAndPreviousVelocityIsZero_ExpectCorrectValue)
 //{
-//    osg::Vec3d initalVelocity(0.0,0.0,0.0);
-//    osg::Vec3d updatedAcceleration(0.0,0.0,-9.8);
+//    std::array<double,3> initalVelocity{0.0,0.0,0.0};
+//    std::array<double,3> updatedAcceleration{0.0,0.0,-9.8};
 //    double deltaT{1};
 
-//    osg::Vec3d compare(0.0,0.0,-9.8);
+//    std::array<double,3> compare{0.0,0.0,-9.8};
 
 //    UpdateBallPhysics newInstance;
 

@@ -45,6 +45,7 @@ add_executable(Unit_Tests
     calculate_new_acceleration.cpp
     calculate_new_velocity.cpp
     calculate_new_position.cpp
+    get_position.cpp
     )
 
 target_link_libraries(Unit_Tests
