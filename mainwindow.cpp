@@ -2,6 +2,7 @@
 #include "ui_mainwindowform.h"
 #include "OSGWidget.h"
 #include "sphereupdatecallback.h"
+#include "BallMotion.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow{parent},

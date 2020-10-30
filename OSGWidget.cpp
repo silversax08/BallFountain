@@ -25,6 +25,7 @@
 #include <QWheelEvent>
 
 #include "sphereupdatecallback.h"
+#include "BallMotion.hpp"
 
 
 

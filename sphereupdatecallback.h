@@ -20,6 +20,7 @@
 #include <QWheelEvent>
 
 #include "OSGWidget.h"
+#include "BallMotion.hpp"
 
 class SphereUpdateCallback: public osg::NodeCallback
 {
@@ -27,6 +28,7 @@ public:
     SphereUpdateCallback(int count)
     {
         mCount = count;
+
     }
 
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
@@ -34,7 +36,8 @@ public:
         mCount--;
 
 
-        osg::Vec3d scaleFactor(1.0, 1.0, mScaleStep*mCount- 10.0);
+        std::array<double,3> position{newBall.get_position()};
+        osg::Vec3d scaleFactor(position[0], position[1], position[2]);
         osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
         pat->setPosition(scaleFactor);
 
@@ -44,6 +47,7 @@ public:
             return;
     }
 protected:
+    UpdateBallPhysics newBall;
     bool mUp{true};
     unsigned int mCount{100};
     double mScaleStep{6.0/30.0};

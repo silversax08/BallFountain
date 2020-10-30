@@ -10,9 +10,7 @@ TEST(getPosition,whenPositionIsZeroVelocityIsZeroAccelerationIsGravity_ExpectCor
     UpdateBallPhysics newInstance;
     std::array<double,3> position{newInstance.get_position()};
 
-    EXPECT_NEAR(compare[0], position[0],.001);
-    EXPECT_NEAR(compare[1], position[1],.001);
-    EXPECT_NEAR(compare[2], position[2],.001);
+    EXPECT_EQ(compare,position);
 }
 
 TEST(getPosition,whenPositionIsZeroVelocityIsZeroAccelerationIsGravityAndTwoIterations_ExpectCorrectValue)
@@ -23,7 +21,5 @@ TEST(getPosition,whenPositionIsZeroVelocityIsZeroAccelerationIsGravityAndTwoIter
     std::array<double,3> position{newInstance.get_position()};
     position = newInstance.get_position();
 
-    EXPECT_NEAR(compare[0], position[0],.001);
-    EXPECT_NEAR(compare[1], position[1],.001);
-    EXPECT_NEAR(compare[2], position[2],.001);
+    EXPECT_EQ(compare,position);
 }
