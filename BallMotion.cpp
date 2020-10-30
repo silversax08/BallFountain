@@ -1,5 +1,5 @@
 #include "BallMotion.hpp"
-//#include <osg/StateSet>
+#include <iostream>
 
 UpdateBallPhysics::UpdateBallPhysics()
 {  
@@ -28,10 +28,12 @@ std::array<double,3> UpdateBallPhysics::calculate_new_acceleration(std::array<do
 {
     std::array<double,3> newAcceleration;
 
-    for (size_t i{0}; i < newDragForce.size(); i++)
+    for (size_t i{0}; i < newAcceleration.size(); i++)
     {
-        newAcceleration[i] = oldAcceleration[i]+newDragForce[i]/mass;
+        newAcceleration[i] = oldAcceleration[i]+(newDragForce[i]/mass);
     }
+    std::cout<<newDragForce[2]<<std::endl;
+    std::cout<<mass<<std::endl;
 
     return newAcceleration;
 }

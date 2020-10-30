@@ -20,7 +20,7 @@ protected:
     std::array<double,3> velocity{0.0,0.0,0.0};
     std::array<double,3> position{0.0,0.0,10.0};
     std::array<double,3> dragForce{0.0,0.0,0.0};
-    double deltat{0.0};
+    double deltat{0.1};
     double mass{1.0};
 };
 
