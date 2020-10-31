@@ -5,9 +5,15 @@ UpdateBallPhysics::UpdateBallPhysics()
 {  
 }
 
+UpdateBallPhysics::~UpdateBallPhysics()
+{
+    delete this;
+}
+
 std::array<double,3> UpdateBallPhysics::get_position()
 {
     update_physics();
+    check_for__floor_boucning();
     return position;
 }
 
@@ -16,11 +22,6 @@ void UpdateBallPhysics::update_physics()
     acceleration = calculate_new_acceleration(acceleration,dragForce);
     velocity = calculate_new_velocity(velocity,acceleration,deltat);
     position = calculate_new_position(position,velocity,deltat);
-}
-
-UpdateBallPhysics::~UpdateBallPhysics()
-{
-    delete this;
 }
 
 std::array<double,3> calculate_drag_force()
@@ -65,4 +66,20 @@ std::array<double,3> UpdateBallPhysics::calculate_new_position(std::array<double
     }
 
     return newPosition;
+}
+
+void UpdateBallPhysics::check_for__floor_boucning()
+{
+    if (position[0] < 10.0 && position[0] > -10.0 && position[2] < .75)
+    {
+        if (position[1] < 10.0 && position[1] >= -10.0)
+        {
+                velocity[2] = -velocity[2]*coefficientOfRestitution;
+        }
+        else
+            return;
+        update_physics();
+    }
+    else
+        return;
 }
