@@ -177,7 +177,7 @@ void OSGWidget::sphere_setup()
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
     transform->setPosition(osg::Vec3( 4.0, 0.0, 2.0 ));
-    transform->setUpdateCallback(new SphereUpdateCallback(100));
+    transform->setUpdateCallback(new SphereUpdateCallback());
     transform->addChild(geode);
 
     mRoot->addChild(transform);
@@ -203,7 +203,6 @@ void OSGWidget::block_setup()
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
     transform->setPosition(osg::Vec3( 0.0, 0.0, -11.0 ));
-//    transform->setUpdateCallback(new SphereUpdateCallback(100));
     transform->addChild(geode);
 
     mRoot->addChild(transform);
@@ -229,7 +228,6 @@ void OSGWidget::world_setup()
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
     transform->setPosition(osg::Vec3( 0.0, 0.0, -11.0 ));
-//    transform->setUpdateCallback(new SphereUpdateCallback(100));
     transform->addChild(geode);
 
     mRoot->addChild(transform);

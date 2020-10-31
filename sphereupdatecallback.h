@@ -25,26 +25,18 @@
 class SphereUpdateCallback: public osg::NodeCallback
 {
 public:
-    SphereUpdateCallback(int count)
+    SphereUpdateCallback()
     {
-        mCount = count;
-
     }
 
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
     {
-        mCount--;
-
-
         std::array<double,3> position{newBall.get_position()};
         osg::Vec3d scaleFactor(position[0], position[1], position[2]);
         osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
         pat->setPosition(scaleFactor);
 
         traverse(node, nv);
-
-        if(mCount==0)
-            return;
     }
 protected:
     UpdateBallPhysics newBall;

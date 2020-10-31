@@ -13,7 +13,7 @@ UpdateBallPhysics::~UpdateBallPhysics()
 std::array<double,3> UpdateBallPhysics::get_position()
 {
     update_physics();
-    check_for__floor_boucning();
+    check_for_floor_bouncing();
     return position;
 }
 
@@ -68,7 +68,7 @@ std::array<double,3> UpdateBallPhysics::calculate_new_position(std::array<double
     return newPosition;
 }
 
-void UpdateBallPhysics::check_for__floor_boucning()
+void UpdateBallPhysics::check_for_floor_bouncing()
 {
     if (position[0] < 10.0 && position[0] > -10.0 && position[2] < .75)
     {
@@ -82,4 +82,10 @@ void UpdateBallPhysics::check_for__floor_boucning()
     }
     else
         return;
+}
+
+void UpdateBallPhysics::check_for_leaving_world()
+{
+    if (position[2] <= -15)
+        delete this;
 }

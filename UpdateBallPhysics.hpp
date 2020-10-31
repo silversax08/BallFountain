@@ -15,7 +15,8 @@ public:
     std::array<double,3> calculate_new_position(std::array<double,3> oldPosition, std::array<double,3> newVelocity, double deltaT);
 protected:
     void update_physics();
-    void check_for__floor_boucning();
+    void check_for_floor_bouncing();
+    void check_for_leaving_world();
     std::array<double,3> calculate_drag_force();
     std::array<double,3> acceleration{0.0,0.0,-9.8};
     std::array<double,3> velocity{2.0,0.0,15.0};
