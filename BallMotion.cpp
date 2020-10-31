@@ -18,6 +18,11 @@ void UpdateBallPhysics::update_physics()
     position = calculate_new_position(position,velocity,deltat);
 }
 
+UpdateBallPhysics::~UpdateBallPhysics()
+{
+    delete this;
+}
+
 std::array<double,3> calculate_drag_force()
 {
     std::array<double,3> dragForce{0,0,0};
