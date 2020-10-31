@@ -16,26 +16,45 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="LaunchButton">
       <property name="text">
        <string>Launch Ball</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <spacer name="horizontalSpacer">
+     <widget class="QSlider" name="VelocitySlider">
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>10</number>
+      </property>
+      <property name="sliderPosition">
+       <number>3</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>700</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
+     </widget>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="0" column="2">
+     <widget class="QSlider" name="AngleSlider">
+      <property name="minimum">
+       <number>-90</number>
+      </property>
+      <property name="maximum">
+       <number>90</number>
+      </property>
+      <property name="tracking">
+       <bool>true</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="3">
      <widget class="OSGWidget" name="OSGOutput" native="true"/>
     </item>
    </layout>

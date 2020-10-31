@@ -199,31 +199,6 @@ void OSGWidget::block_setup()
     mRoot->addChild(transform);
 }
 
-//void OSGWidget::world_setup()
-//{
-//    osg::Box* box    = new osg::Box( osg::Vec3( 0.f, 0.f, 0.f ), 50.0f );
-//    osg::ShapeDrawable* sd = new osg::ShapeDrawable( box );
-//    sd->setColor( osg::Vec4( 1.f, 1.f, 0.f, 1.f ) );
-//    sd->setName( "Box" );
-
-//    osg::Geode* geode = new osg::Geode;
-//    geode->addDrawable( sd );
-
-//    osg::StateSet* stateSet = geode->getOrCreateStateSet();
-//    osg::Material* material = new osg::Material;
-
-//    material->setColorMode( osg::Material::AMBIENT_AND_DIFFUSE );
-
-//    stateSet->setAttributeAndModes( material, osg::StateAttribute::ON );
-//    stateSet->setMode( GL_DEPTH_TEST, osg::StateAttribute::ON );
-
-//    osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
-//    transform->setPosition(osg::Vec3( 0.0, 0.0, -11.0 ));
-//    transform->addChild(geode);
-
-//    mRoot->addChild(transform);
-//}
-
 void OSGWidget::muzzle_setup()
 {
     osg::Cylinder* cylinder    = new osg::Cylinder( osg::Vec3( 0.f, 0.f, 0.f ), 1.0f, 2.0f );
@@ -243,8 +218,6 @@ void OSGWidget::muzzle_setup()
     stateSet->setMode( GL_DEPTH_TEST, osg::StateAttribute::ON );
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
-//    transform->setPosition(osg::Vec3( 0.0, 0.0, -11.0 ));
-//    transform->setUpdateCallback(new SphereUpdateCallback(100));
     transform->addChild(geode);
 
     mRoot->addChild(transform);

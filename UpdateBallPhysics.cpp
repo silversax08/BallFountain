@@ -89,3 +89,21 @@ void UpdateBallPhysics::check_for_leaving_world()
     if (position[2] <= -15)
         delete this;
 }
+
+void UpdateBallPhysics::set_inital_velocity(double sliderVelocity, double sliderAngle)
+{
+
+
+    if (sliderAngle >= 0)
+    {
+        double angle{90-sliderAngle};
+        velocity[0] = sliderVelocity*cos(angle);
+        velocity[2] = sliderVelocity*sin(angle);
+    }
+    else
+    {
+        double angle{90+sliderAngle};
+        velocity[0] = -sliderVelocity*cos(-angle);
+        velocity[2] = sliderVelocity*sin(-angle);
+    }
+}

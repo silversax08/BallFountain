@@ -24,5 +24,10 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
+
+}
+
+void MainWindow::on_LaunchButton_clicked()
+{
     mMainWindowUI->OSGOutput->sphere_setup();
 }
