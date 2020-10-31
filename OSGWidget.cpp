@@ -49,8 +49,6 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     mView->setSceneData( mRoot.get() );
     mView->addEventHandler( new osgViewer::StatsHandler );
 
-//    create_manipulator();
-
     osg::ref_ptr<osgGA::TrackballManipulator> manipulator = new osgGA::TrackballManipulator;
     manipulator->setAllowThrow( false );
     manipulator->setHomePosition(osg::Vec3d(0.0,-25.0,14.0),osg::Vec3d(0,0,2),osg::Vec3d(0,0,1));
@@ -65,7 +63,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     sphere_setup();
     block_setup();
     muzzle_setup();
-    world_setup();
+//    world_setup();
 
 
     this->setFocusPolicy( Qt::StrongFocus );
@@ -150,17 +148,10 @@ void OSGWidget::camera_setup(int width, int height, int pixelRatio,float aspectR
     mView->setCamera( camera );
 }
 
-//void OSGWidget::create_manipulator()
-//{
-//    osg::ref_ptr<osgGA::TrackballManipulator> manipulator = new osgGA::TrackballManipulator;
-//    manipulator->setHomePosition(osg::Vec3d(0.0,-20.0,3.0),osg::Vec3d(0,0,0),osg::Vec3d(0,0,1));
-//    this->getOsgViewer()->setCameraManipulator( manipulator );
-//}
-
 void OSGWidget::sphere_setup()
 {
     osg::Sphere* sphere    = new osg::Sphere( osg::Vec3( 0.f, 0.f, 0.f ), 1.0f );
-    osg::ShapeDrawable* sd = new osg::ShapeDrawable( sphere );
+    osg::ShapeDrawable* sd = new osg::ShapeDrawable(sphere);
     sd->setColor( osg::Vec4( 1.f, 0.f, 0.f, 1.f ) );
     sd->setName( "Sphere" );
 
@@ -208,36 +199,36 @@ void OSGWidget::block_setup()
     mRoot->addChild(transform);
 }
 
-void OSGWidget::world_setup()
-{
-    osg::Box* box    = new osg::Box( osg::Vec3( 0.f, 0.f, 0.f ), 50.0f );
-    osg::ShapeDrawable* sd = new osg::ShapeDrawable( box );
-    sd->setColor( osg::Vec4( 1.f, 1.f, 0.f, 1.f ) );
-    sd->setName( "Box" );
+//void OSGWidget::world_setup()
+//{
+//    osg::Box* box    = new osg::Box( osg::Vec3( 0.f, 0.f, 0.f ), 50.0f );
+//    osg::ShapeDrawable* sd = new osg::ShapeDrawable( box );
+//    sd->setColor( osg::Vec4( 1.f, 1.f, 0.f, 1.f ) );
+//    sd->setName( "Box" );
 
-    osg::Geode* geode = new osg::Geode;
-    geode->addDrawable( sd );
+//    osg::Geode* geode = new osg::Geode;
+//    geode->addDrawable( sd );
 
-    osg::StateSet* stateSet = geode->getOrCreateStateSet();
-    osg::Material* material = new osg::Material;
+//    osg::StateSet* stateSet = geode->getOrCreateStateSet();
+//    osg::Material* material = new osg::Material;
 
-    material->setColorMode( osg::Material::AMBIENT_AND_DIFFUSE );
+//    material->setColorMode( osg::Material::AMBIENT_AND_DIFFUSE );
 
-    stateSet->setAttributeAndModes( material, osg::StateAttribute::ON );
-    stateSet->setMode( GL_DEPTH_TEST, osg::StateAttribute::ON );
+//    stateSet->setAttributeAndModes( material, osg::StateAttribute::ON );
+//    stateSet->setMode( GL_DEPTH_TEST, osg::StateAttribute::ON );
 
-    osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
-    transform->setPosition(osg::Vec3( 0.0, 0.0, -11.0 ));
-    transform->addChild(geode);
+//    osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
+//    transform->setPosition(osg::Vec3( 0.0, 0.0, -11.0 ));
+//    transform->addChild(geode);
 
-    mRoot->addChild(transform);
-}
+//    mRoot->addChild(transform);
+//}
 
 void OSGWidget::muzzle_setup()
 {
     osg::Cylinder* cylinder    = new osg::Cylinder( osg::Vec3( 0.f, 0.f, 0.f ), 1.0f, 2.0f );
     osg::ShapeDrawable* sd = new osg::ShapeDrawable( cylinder );
-    sd->setColor( osg::Vec4( 1.f, 1.f, 0.f, 1.f ) );
+    sd->setColor( osg::Vec4( 0.f, 0.f, 0.f, 0.f ) );
     sd->setName( "Cylinder" );
 
     osg::Geode* geode = new osg::Geode;
