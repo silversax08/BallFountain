@@ -21,6 +21,7 @@ public:
   virtual ~OSGWidget();
   void sphere_setup();
 protected:
+  void create_manipulator();
   void world_setup();
   void muzzle_setup();
   void block_setup();

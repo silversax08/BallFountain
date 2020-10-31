@@ -25,7 +25,7 @@
 #include <QWheelEvent>
 
 #include "sphereupdatecallback.h"
-#include "BallMotion.hpp"
+#include "UpdateBallPhysics.hpp"
 
 
 
@@ -49,9 +49,11 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     mView->setSceneData( mRoot.get() );
     mView->addEventHandler( new osgViewer::StatsHandler );
 
+//    create_manipulator();
+
     osg::ref_ptr<osgGA::TrackballManipulator> manipulator = new osgGA::TrackballManipulator;
     manipulator->setAllowThrow( false );
-    manipulator->setHomePosition(osg::Vec3d(0.0,-20.0,3.0),osg::Vec3d(0,0,0),osg::Vec3d(0,0,1));
+    manipulator->setHomePosition(osg::Vec3d(0.0,-25.0,14.0),osg::Vec3d(0,0,2),osg::Vec3d(0,0,1));
     mView->setCameraManipulator( manipulator );
 
 
@@ -148,6 +150,12 @@ void OSGWidget::camera_setup(int width, int height, int pixelRatio,float aspectR
     mView->setCamera( camera );
 }
 
+//void OSGWidget::create_manipulator()
+//{
+//    osg::ref_ptr<osgGA::TrackballManipulator> manipulator = new osgGA::TrackballManipulator;
+//    manipulator->setHomePosition(osg::Vec3d(0.0,-20.0,3.0),osg::Vec3d(0,0,0),osg::Vec3d(0,0,1));
+//    this->getOsgViewer()->setCameraManipulator( manipulator );
+//}
 
 void OSGWidget::sphere_setup()
 {

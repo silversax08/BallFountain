@@ -1,5 +1,5 @@
-#ifndef BALLMOTION_HPP
-#define BALLMOTION_HPP
+#ifndef UPDATEBALLPHYSICS_HPP
+#define UPDATEBALLPHYSICS_HPP
 
 #include <osg/StateSet>
 #include <array>
@@ -26,4 +26,4 @@ protected:
 };
 
 
-#endif // BALLMOTION_HPP
+#endif // UPDATEBALLPHYSICS_HPP

@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
-#include "BallMotion.hpp"
-#include <osg/StateSet>
+#include "UpdateBallPhysics.hpp"
 
 TEST(updateBallAcceleration,whenInitialAccelerationIsGravityAndThereIsNoDragForce_ExpectCorrectValue)
 {

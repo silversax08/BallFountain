@@ -1,4 +1,4 @@
-#include "BallMotion.hpp"
+#include "UpdateBallPhysics.hpp"
 #include <iostream>
 
 UpdateBallPhysics::UpdateBallPhysics()

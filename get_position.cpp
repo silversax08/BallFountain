@@ -1,7 +1,5 @@
 #include "gtest/gtest.h"
-#include "BallMotion.hpp"
-#include <osg/StateSet>
-#include <array>
+#include "UpdateBallPhysics.hpp"
 
 TEST(getPosition,whenPositionIsZeroVelocityIsZeroAccelerationIsGravity_ExpectCorrectValue)
 {

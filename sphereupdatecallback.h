@@ -20,7 +20,7 @@
 #include <QWheelEvent>
 
 #include "OSGWidget.h"
-#include "BallMotion.hpp"
+#include "UpdateBallPhysics.hpp"
 
 class SphereUpdateCallback: public osg::NodeCallback
 {
