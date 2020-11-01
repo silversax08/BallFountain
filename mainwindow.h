@@ -24,8 +24,18 @@ private slots:
 
     void on_LaunchButton_clicked();
 
+    void on_VelocitySlider_sliderMoved(int position);
+
+    void on_AngleSlider_sliderMoved(int position);
+
+    void on_VelocitySlider_valueChanged(int value);
+
+    void on_AngleSlider_valueChanged(int value);
+
 private:
     Ui::MainWindowForm *mMainWindowUI;
+    int velocity{7};
+    int angle{0};
 };
 
 #endif // MAINWINDOW_H

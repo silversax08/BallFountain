@@ -25,13 +25,16 @@
 class SphereUpdateCallback: public osg::NodeCallback
 {
 public:
-    SphereUpdateCallback()
+    SphereUpdateCallback(int inputVelocity, int inputAngle)
     {
+        newBall = new UpdateBallPhysics(inputVelocity,inputAngle);
+        velocity = inputVelocity;
+        angle = inputAngle;
     }
 
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
     {
-        std::array<double,3> position{newBall.get_position()};
+        std::array<double,3> position{newBall->get_position()};
         osg::Vec3d scaleFactor(position[0], position[1], position[2]);
         osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
         pat->setPosition(scaleFactor);
@@ -39,7 +42,9 @@ public:
         traverse(node, nv);
     }
 protected:
-    UpdateBallPhysics newBall;
+    int velocity{3};
+    int angle{0};
+    UpdateBallPhysics* newBall;
     bool mUp{true};
     unsigned int mCount{100};
     double mScaleStep{6.0/30.0};

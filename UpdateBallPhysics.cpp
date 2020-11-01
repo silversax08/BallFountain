@@ -2,12 +2,17 @@
 #include <iostream>
 
 UpdateBallPhysics::UpdateBallPhysics()
+{
+
+}
+
+UpdateBallPhysics::UpdateBallPhysics(int inputVelocity, int inputAngle)
 {  
+    set_inital_velocity(inputVelocity,inputAngle);
 }
 
 UpdateBallPhysics::~UpdateBallPhysics()
 {
-    delete this;
 }
 
 std::array<double,3> UpdateBallPhysics::get_position()
@@ -90,20 +95,24 @@ void UpdateBallPhysics::check_for_leaving_world()
         delete this;
 }
 
-void UpdateBallPhysics::set_inital_velocity(double sliderVelocity, double sliderAngle)
+void UpdateBallPhysics::set_inital_velocity(int sliderVelocity, int sliderAngle)
 {
 
 
     if (sliderAngle >= 0)
     {
-        double angle{90-sliderAngle};
-        velocity[0] = sliderVelocity*cos(angle);
-        velocity[2] = sliderVelocity*sin(angle);
+        int angle{90-sliderAngle};
+//        velocity[0] = sliderVelocity*cos(angle);
+//        velocity[2] = sliderVelocity*sin(angle);
+        velocity[0] = 0;
+        velocity[2] = sliderVelocity;
     }
     else
     {
-        double angle{90+sliderAngle};
-        velocity[0] = -sliderVelocity*cos(-angle);
-        velocity[2] = sliderVelocity*sin(-angle);
+        int angle{90+sliderAngle};
+//        velocity[0] = -sliderVelocity*cos(-angle);
+//        velocity[2] = sliderVelocity*sin(-angle);
+        velocity[0] = 0;
+        velocity[2] = sliderVelocity;
     }
 }

@@ -19,9 +19,8 @@ public:
              Qt::WindowFlags f = 0 );
 
   virtual ~OSGWidget();
-  void sphere_setup();
+  void sphere_setup(int velocity, int angle);
 protected:
-  void create_manipulator();
   void world_setup();
   void muzzle_setup();
   void block_setup();

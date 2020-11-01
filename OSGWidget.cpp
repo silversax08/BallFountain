@@ -54,13 +54,12 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     manipulator->setHomePosition(osg::Vec3d(0.0,-25.0,14.0),osg::Vec3d(0,0,2),osg::Vec3d(0,0,1));
     mView->setCameraManipulator( manipulator );
 
-
     mViewer->addView( mView );
     mViewer->setThreadingModel( osgViewer::CompositeViewer::SingleThreaded );
     mViewer->realize();
     mView->home();
 
-    sphere_setup();
+    sphere_setup(3,0);
     block_setup();
     muzzle_setup();
 //    world_setup();
@@ -148,7 +147,7 @@ void OSGWidget::camera_setup(int width, int height, int pixelRatio,float aspectR
     mView->setCamera( camera );
 }
 
-void OSGWidget::sphere_setup()
+void OSGWidget::sphere_setup(int velocity, int angle)
 {
     osg::Sphere* sphere    = new osg::Sphere( osg::Vec3( 0.f, 0.f, 0.f ), 1.0f );
     osg::ShapeDrawable* sd = new osg::ShapeDrawable(sphere);
@@ -168,7 +167,7 @@ void OSGWidget::sphere_setup()
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
     transform->setPosition(osg::Vec3( 4.0, 0.0, 2.0 ));
-    transform->setUpdateCallback(new SphereUpdateCallback());
+    transform->setUpdateCallback(new SphereUpdateCallback(velocity, angle));
     transform->addChild(geode);
 
     mRoot->addChild(transform);
