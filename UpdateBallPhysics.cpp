@@ -43,8 +43,6 @@ std::array<double,3> UpdateBallPhysics::calculate_new_acceleration(std::array<do
     {
         newAcceleration[i] = oldAcceleration[i]+(newDragForce[i]/mass);
     }
-    std::cout<<newDragForce[2]<<std::endl;
-    std::cout<<mass<<std::endl;
 
     return newAcceleration;
 }
@@ -95,24 +93,21 @@ void UpdateBallPhysics::check_for_leaving_world()
         delete this;
 }
 
-void UpdateBallPhysics::set_inital_velocity(int sliderVelocity, int sliderAngle)
+std::array<double,3>  UpdateBallPhysics::set_inital_velocity(int sliderVelocity, int sliderAngle)
 {
-
 
     if (sliderAngle >= 0)
     {
-        int angle{90-sliderAngle};
-//        velocity[0] = sliderVelocity*cos(angle);
-//        velocity[2] = sliderVelocity*sin(angle);
-        velocity[0] = 0;
-        velocity[2] = sliderVelocity;
+        double angle{(90-sliderAngle)*3.14/180};
+        velocity[0] = sliderVelocity*cos(angle);
+        velocity[2] = sliderVelocity*sin(angle);
     }
     else
     {
-        int angle{90+sliderAngle};
-//        velocity[0] = -sliderVelocity*cos(-angle);
-//        velocity[2] = sliderVelocity*sin(-angle);
-        velocity[0] = 0;
-        velocity[2] = sliderVelocity;
+        double angle{(90+sliderAngle)*3.14/180};
+        velocity[0] = -sliderVelocity*cos(-angle);
+        velocity[2] = -sliderVelocity*sin(-angle);
     }
+
+    return velocity;
 }

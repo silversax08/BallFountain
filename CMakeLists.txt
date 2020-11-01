@@ -19,6 +19,8 @@ SET(CMAKE_AUTORCC ON)
 add_library(BallMotion STATIC
     UpdateBallPhysics.hpp
     UpdateBallPhysics.cpp
+    physicsWorld.hpp
+    physicsWorld.cpp
   )
 
 add_executable(${PROJECT_NAME}
@@ -46,6 +48,7 @@ add_executable(Unit_Tests
     calculate_new_velocity.cpp
     calculate_new_position.cpp
     get_position.cpp
+    set_initial_velocity.cpp
     )
 
 target_link_libraries(Unit_Tests

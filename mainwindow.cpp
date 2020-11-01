@@ -3,6 +3,7 @@
 #include "OSGWidget.h"
 #include "sphereupdatecallback.h"
 #include "UpdateBallPhysics.hpp"
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow{parent},
@@ -20,11 +21,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
-}
-
-void MainWindow::on_pushButton_clicked()
-{
-
 }
 
 void MainWindow::on_LaunchButton_clicked()
