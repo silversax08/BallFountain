@@ -19,8 +19,6 @@ SET(CMAKE_AUTORCC ON)
 add_library(BallMotion STATIC
     UpdateBallPhysics.hpp
     UpdateBallPhysics.cpp
-    physicsWorld.hpp
-    physicsWorld.cpp
   )
 
 add_executable(${PROJECT_NAME}
@@ -32,6 +30,10 @@ add_executable(${PROJECT_NAME}
     OSGWidget.cpp
     sphereupdatecallback.h
     sphereupdatecallback.cpp
+    physicsWorld.hpp
+    physicsWorld.cpp
+    Ball.h
+    Ball.cpp
 )
 target_link_libraries(${PROJECT_NAME}
     ${OPENSCENEGRAPH_LIBRARIES}

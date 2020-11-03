@@ -25,11 +25,11 @@
 class SphereUpdateCallback: public osg::NodeCallback
 {
 public:
-    SphereUpdateCallback(int inputVelocity, int inputAngle)
+    SphereUpdateCallback(UpdateBallPhysics* ballPhysics)
     {
-        newBall = new UpdateBallPhysics(inputVelocity,inputAngle);
-        velocity = inputVelocity;
-        angle = inputAngle;
+        newBall = ballPhysics;
+//        velocity = inputVelocity;
+//        angle = inputAngle;
     }
 
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
