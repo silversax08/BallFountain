@@ -9,13 +9,14 @@ class UpdateBallPhysics
 public:
     UpdateBallPhysics();
     UpdateBallPhysics(int inputVelocity, int inputAngle);
-    ~UpdateBallPhysics();
     std::array<double,3> get_position();
-    std::array<double,3>  set_inital_velocity(int sliderVelocity, int sliderAngle);
+    std::array<double,3> set_inital_velocity(int sliderVelocity, int sliderAngle);
     std::array<double,3> calculate_new_acceleration(std::array<double,3> oldAcceleration, std::array<double,3> newdragForce);
     std::array<double,3> calculate_new_velocity(std::array<double,3> oldVelocity, std::array<double,3> newAcceleration, double deltaT);
     std::array<double,3> calculate_new_position(std::array<double,3> oldPosition, std::array<double,3> newVelocity, double deltaT);
+
 protected:
+
     void update_physics();
     void check_for_floor_bouncing();
     void check_for_leaving_world();

@@ -1,18 +1,24 @@
 #include "physicsWorld.hpp"
 #include "sphereupdatecallback.h"
+#include "Ball.h"
 
-PhysicsWorld::PhysicsWorld(OSGWidget* pointer)
+#include <osg/Geode>
+#include <osg/Material>
+#include <osg/ShapeDrawable>
+
+PhysicsWorld::PhysicsWorld()
 {
-    OSGWidgetPointer = pointer;
+
 }
 
-PhysicsWorld::~PhysicsWorld()
+osg::PositionAttitudeTransform* PhysicsWorld::add_ball(int inputVelocity, int inputAngle)
 {
-
+    Ball newBall(inputVelocity,inputAngle);
+    ballList.push_back(newBall.get_physics());
+    return newBall.get_transform();
 }
 
-void PhysicsWorld::add_ball_to_world(int inputVelocity, int inputAngle)
+void PhysicsWorld::update_for_timestep()
 {
-    OSGWidgetPointer->sphere_setup(inputVelocity, inputAngle);
-//    ballList.push_back(OSGWidgetPointer->sphere_setup(inputVelocity, inputAngle)->SphereUpdateCallback)
+
 }

@@ -4,18 +4,20 @@
 #include "OSGWidget.h"
 #include "sphereupdatecallback.h"
 #include <vector>
+#include "UpdateBallPhysics.hpp"
+
+#include <osg/Geode>
+#include <osg/Material>
+#include <osg/ShapeDrawable>
 
 class PhysicsWorld
 {
 public:
-    PhysicsWorld(OSGWidget* pointer);
-    ~PhysicsWorld();
-    void add_ball_to_world(int inputVelocity, int inputAngle);
+    PhysicsWorld();
+    osg::PositionAttitudeTransform* add_ball(int inputVelocity, int inputAngle);
 protected:
-    OSGWidget* OSGWidgetPointer;
-    std::vector<SphereUpdateCallback*> ballList;
-    int velocity;
-    int angle;
+    std::vector<UpdateBallPhysics*> ballList;
+    void update_for_timestep();
 };
 
 #endif // PHYSICSWORLD_HPP

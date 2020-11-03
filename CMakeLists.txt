@@ -19,6 +19,8 @@ SET(CMAKE_AUTORCC ON)
 add_library(BallMotion STATIC
     UpdateBallPhysics.hpp
     UpdateBallPhysics.cpp
+    BallPhysicsEquations.h
+    BallPhysicsEquations.cpp
   )
 
 add_executable(${PROJECT_NAME}

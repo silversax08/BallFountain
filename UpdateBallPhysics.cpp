@@ -1,4 +1,5 @@
 #include "UpdateBallPhysics.hpp"
+#include "BallPhysicsEquations.h"
 #include <iostream>
 
 UpdateBallPhysics::UpdateBallPhysics()
@@ -9,10 +10,6 @@ UpdateBallPhysics::UpdateBallPhysics()
 UpdateBallPhysics::UpdateBallPhysics(int inputVelocity, int inputAngle)
 {  
     set_inital_velocity(inputVelocity,inputAngle);
-}
-
-UpdateBallPhysics::~UpdateBallPhysics()
-{
 }
 
 std::array<double,3> UpdateBallPhysics::get_position()
@@ -29,46 +26,19 @@ void UpdateBallPhysics::update_physics()
     position = calculate_new_position(position,velocity,deltat);
 }
 
-std::array<double,3> calculate_drag_force()
-{
-    std::array<double,3> dragForce{0,0,0};
-    return dragForce;
-}
-
 std::array<double,3> UpdateBallPhysics::calculate_new_acceleration(std::array<double,3> oldAcceleration,std::array<double,3> newDragForce)
 {
-    std::array<double,3> newAcceleration;
-
-    for (size_t i{0}; i < newAcceleration.size(); i++)
-    {
-        newAcceleration[i] = oldAcceleration[i]+(newDragForce[i]/mass);
-    }
-
-    return newAcceleration;
+    return ballPhysicsEquations::calculate_new_acceleration(oldAcceleration,newDragForce,mass);
 }
 
 std::array<double,3> UpdateBallPhysics::calculate_new_velocity(std::array<double,3> oldVelocity, std::array<double,3> newAcceleration, double deltaT)
 {
-    std::array<double,3> newVelocity;
-
-    for (size_t i{0}; i < newVelocity.size(); i++)
-    {
-        newVelocity[i] = oldVelocity[i]+newAcceleration[i]*deltaT;
-    }
-
-    return newVelocity;
+    return ballPhysicsEquations::calculate_new_velocity(oldVelocity,newAcceleration,deltaT);
 }
 
 std::array<double,3> UpdateBallPhysics::calculate_new_position(std::array<double,3> oldPosition, std::array<double,3> newVelocity, double deltaT)
 {
-    std::array<double,3> newPosition;
-
-    for (size_t i{0}; i < newPosition.size(); i++)
-    {
-        newPosition[i] = oldPosition[i]+newVelocity[i]*deltaT;
-    }
-
-    return newPosition;
+    return ballPhysicsEquations::calculate_new_position(oldPosition,newVelocity,deltaT);
 }
 
 void UpdateBallPhysics::check_for_floor_bouncing()
@@ -95,7 +65,6 @@ void UpdateBallPhysics::check_for_leaving_world()
 
 std::array<double,3>  UpdateBallPhysics::set_inital_velocity(int sliderVelocity, int sliderAngle)
 {
-
     if (sliderAngle >= 0)
     {
         double angle{(90-sliderAngle)*3.14/180};
@@ -110,4 +79,5 @@ std::array<double,3>  UpdateBallPhysics::set_inital_velocity(int sliderVelocity,
     }
 
     return velocity;
+//    return ballPhysicsEquations::set_inital_velocity(sliderVelocity,sliderAngle);
 }

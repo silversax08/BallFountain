@@ -10,6 +10,7 @@
 #include <osgText/Text>
 
 
+
 class OSGWidget : public QOpenGLWidget
 {
   Q_OBJECT
