@@ -202,7 +202,7 @@ void OSGWidget::block_setup()
 
 void OSGWidget::muzzle_setup()
 {
-    osg::Cylinder* cylinder    = new osg::Cylinder( osg::Vec3( 0.f, 0.f, 0.f ), 1.0f, 2.0f );
+    osg::Cylinder* cylinder    = new osg::Cylinder( osg::Vec3( 0.f, 0.f, 0.f ), 1.5f, 3.5f );
     osg::ShapeDrawable* sd = new osg::ShapeDrawable( cylinder );
     sd->setColor( osg::Vec4( 0.f, 0.f, 0.f, 0.f ) );
     sd->setName( "Cylinder" );

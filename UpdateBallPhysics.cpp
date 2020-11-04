@@ -50,22 +50,22 @@ void UpdateBallPhysics::check_for_low_z_velocity()
 }
 
 std::array<double,3>  UpdateBallPhysics::set_inital_velocity(int sliderVelocity, int sliderAngle)
+//Copied directly from BallPhysicsEquations::set_initial_velocity. Acted weird when called the function in this function though.
 {
-//    if (sliderAngle >= 0)
-//    {
-//        double angle{(90-sliderAngle)*3.14/180};
-//        velocity[0] = sliderVelocity*cos(angle);
-//        velocity[2] = sliderVelocity*sin(angle);
-//    }
-//    else
-//    {
-//        double angle{(90+sliderAngle)*3.14/180};
-//        velocity[0] = -sliderVelocity*cos(-angle);
-//        velocity[2] = -sliderVelocity*sin(-angle);
-//    }
+    if (sliderAngle >= 0)
+    {
+        double angle{(90-sliderAngle)*3.14/180};
+        velocity[0] = sliderVelocity*cos(angle);
+        velocity[2] = sliderVelocity*sin(angle);
+    }
+    else
+    {
+        double angle{(90+sliderAngle)*3.14/180};
+        velocity[0] = -sliderVelocity*cos(-angle);
+        velocity[2] = -sliderVelocity*sin(-angle);
+    }
 
-//    return velocity;
-    return ballPhysicsEquations::set_inital_velocity(sliderVelocity,sliderAngle);
+    return velocity;
 }
 
 std::array<double,3> UpdateBallPhysics::calculate_new_acceleration(std::array<double,3> oldAcceleration,std::array<double,3> newDragForce)

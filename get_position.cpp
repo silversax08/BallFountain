@@ -3,7 +3,7 @@
 
 TEST(getPosition,whenPositionIsTenVelocityIsZeroAccelerationIsGravity_ExpectCorrectValue)
 {
-    std::array<double,3> compare{0.0,0.0,0.902};
+    std::array<double,3> compare{0.0,0.0,2.902};
 
     UpdateBallPhysics newInstance;
     std::array<double,3> position{newInstance.get_position()};
@@ -13,7 +13,7 @@ TEST(getPosition,whenPositionIsTenVelocityIsZeroAccelerationIsGravity_ExpectCorr
 
 TEST(getPosition,whenPositionIsTenVelocityIsZeroAccelerationIsGravityAndTwoIterations_ExpectCorrectValue)
 {
-    std::array<double,3> compare{0.0,0.0,0.755};
+    std::array<double,3> compare{0.0,0.0,2.706};
 
     UpdateBallPhysics newInstance;
     std::array<double,3> position{newInstance.get_position()};
