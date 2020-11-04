@@ -1,16 +1,11 @@
 #ifndef PHYSICSWORLD_HPP
 #define PHYSICSWORLD_HPP
 
-//#include "OSGWidget.h"
-#include "sphereupdatecallback.h"
-#include <vector>
 #include "UpdateBallPhysics.hpp"
-
-#include <osg/Geode>
-#include <osg/Material>
 #include <osg/ShapeDrawable>
 
 class PhysicsWorld
+//Did not get the chance to finish working on this class
 {
 public:
     PhysicsWorld();

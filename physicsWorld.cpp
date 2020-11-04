@@ -1,10 +1,5 @@
 #include "physicsWorld.hpp"
-#include "sphereupdatecallback.h"
 #include "Ball.h"
-
-#include <osg/Geode>
-#include <osg/Material>
-#include <osg/ShapeDrawable>
 
 PhysicsWorld::PhysicsWorld()
 {
