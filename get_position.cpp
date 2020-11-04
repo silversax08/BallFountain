@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "UpdateBallPhysics.hpp"
 
-TEST(getPosition,whenPositionIsZeroVelocityIsZeroAccelerationIsGravity_ExpectCorrectValue)
+TEST(getPosition,whenPositionIsTenVelocityIsZeroAccelerationIsGravity_ExpectCorrectValue)
 {
     std::array<double,3> compare{0.0,0.0,0.902};
 
@@ -11,7 +11,7 @@ TEST(getPosition,whenPositionIsZeroVelocityIsZeroAccelerationIsGravity_ExpectCor
     EXPECT_EQ(compare,position);
 }
 
-TEST(getPosition,whenPositionIsZeroVelocityIsZeroAccelerationIsGravityAndTwoIterations_ExpectCorrectValue)
+TEST(getPosition,whenPositionIsTenVelocityIsZeroAccelerationIsGravityAndTwoIterations_ExpectCorrectValue)
 {
     std::array<double,3> compare{0.0,0.0,0.755};
 

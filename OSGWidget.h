@@ -8,6 +8,7 @@
 #include <osgViewer/CompositeViewer>
 #include <osgGA/TrackballManipulator>
 #include <osgText/Text>
+#include "physicsWorld.hpp"
 
 
 
@@ -22,6 +23,7 @@ public:
   virtual ~OSGWidget();
   void sphere_setup(int velocity, int angle);
 protected:
+  PhysicsWorld world;
   void world_setup();
   void muzzle_setup();
   void block_setup();

@@ -1,7 +1,7 @@
 #ifndef PHYSICSWORLD_HPP
 #define PHYSICSWORLD_HPP
 
-#include "OSGWidget.h"
+//#include "OSGWidget.h"
 #include "sphereupdatecallback.h"
 #include <vector>
 #include "UpdateBallPhysics.hpp"

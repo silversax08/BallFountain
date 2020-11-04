@@ -19,7 +19,7 @@
 #include <QPainter>
 #include <QWheelEvent>
 
-#include "OSGWidget.h"
+//#include "OSGWidget.h"
 #include "UpdateBallPhysics.hpp"
 
 class SphereUpdateCallback: public osg::NodeCallback
