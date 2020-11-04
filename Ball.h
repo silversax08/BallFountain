@@ -2,8 +2,6 @@
 #define BALL_H
 
 #include "UpdateBallPhysics.hpp"
-#include <osg/Geode>
-#include <osg/Material>
 #include <osg/ShapeDrawable>
 
 class Ball

@@ -1,5 +1,4 @@
 #include "Ball.h"
-#include "UpdateBallPhysics.hpp"
 #include "sphereupdatecallback.h"
 #include <osg/Geode>
 #include <osg/Material>
@@ -50,6 +49,4 @@ void Ball::create_visual_representation()
     transform->setPosition(osg::Vec3( 4.0, 0.0, 2.0 ));
     transform->setUpdateCallback(new SphereUpdateCallback(ballPhysics));
     transform->addChild(geode);
-
-//    mRoot->addChild(transform);
 }
